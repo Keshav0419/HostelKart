@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Post an Item | HostelKart</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #F9F3EF;
+      color: #1B3C53;
+    }
+
+    .navbar {
+      background-color: white;
+      padding: 20px 30px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      color: #1B3C53;
+    }
+
+    .container {
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .card {
+      background-color: #D2C1B6;
+      padding: 25px;
+      border-radius: 16px;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .card h2 {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .icon {
+      width: 28px;
+      margin-right: 10px;
+    }
+
+    label {
+      font-weight: 500;
+      display: block;
+      margin-top: 10px;
+      margin-bottom: 5px;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      margin-bottom: 15px;
+      font-size: 16px;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    .checkbox-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 10px 0;
+    }
+
+    .upload-box {
+      border: 2px dashed #456882;
+      border-radius: 12px;
+      padding: 40px;
+      text-align: center;
+      background-color: #F8F3CE;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .upload-box:hover {
+      background-color: #f4efbd;
+    }
+
+    .flex-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    .flex-half {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .button-card {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .btn {
+      padding: 12px 24px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .post {
+      background-color: #1B3C53;
+      color: #fff;
+    }
+
+    .post:hover {
+      background-color: #163042;
+    }
+
+    .draft {
+      background-color: #D2C1B6;
+      color: #1B3C53;
+      border: 2px solid #1B3C53;
+    }
+
+    .draft:hover {
+      background-color: #c6b1a3;
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">HostelKart</div>
+  </header>
+
+  <main class="container">
+    <div class="flex-row">
+      <!-- Left Column -->
+      <div class="flex-half">
+        <div class="card">
+          <h2><img src="https://cdn-icons-png.flaticon.com/512/633/633652.png" class="icon" alt=""> Basic Information</h2>
+
+          <label for="item-title">Item Title</label>
+          <input type="text" id="item-title" placeholder="Enter item title">
+
+          <label for="item-desc">Description</label>
+          <textarea id="item-desc" rows="4" placeholder="Write a brief description"></textarea>
+
+          <label for="category">Category</label>
+          <select id="category">
+            <option value="">Select Category</option>
+            <option>Books</option>
+            <option>Electronics</option>
+            <option>Furniture</option>
+            <option>Clothing</option>
+            <option>Kitchen Items</option>
+          </select>
+
+          <label for="condition">Condition</label>
+          <select id="condition">
+            <option value="">Select Condition</option>
+            <option>New</option>
+            <option>Like New</option>
+            <option>Used</option>
+            <option>Needs Repair</option>
+          </select>
+        </div>
+
+        <div class="card">
+          <h2><img src="https://cdn-icons-png.flaticon.com/512/149/149217.png" class="icon" alt=""> Upload Image</h2>
+          <div class="upload-box">
+            <input type="file" id="image-upload" accept="image/*" />
+            <p>Click or drag image here to upload</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column -->
+      <div class="flex-half">
+        <div class="card">
+          <h2><img src="https://cdn-icons-png.flaticon.com/512/1250/1250615.png" class="icon" alt=""> Pricing</h2>
+
+          <div class="checkbox-row">
+            <input type="checkbox" id="donate">
+            <label for="donate">This item is a donation</label>
+          </div>
+
+          <label for="price">Price (₹)</label>
+          <input type="number" id="price" placeholder="Enter price">
+        </div>
+
+        <div class="card">
+          <h2><img src="https://cdn-icons-png.flaticon.com/512/535/535137.png" class="icon" alt=""> Location</h2>
+
+          <label for="roll-no">Roll Number</label>
+          <input type="text" id="roll-no" placeholder="Enter your roll number">
+
+          <label for="hostel-block">Hostel Block</label>
+          <input type="text" id="hostel-block" placeholder="Enter your hostel block">
+        </div>
+
+        <div class="card button-card">
+          <button class="btn post">Post Item</button>
+          <button class="btn draft">Save as Draft</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+document.querySelector(".btn.post").addEventListener("click", async (e) => {
+  e.preventDefault();
+
+  // Prepare FormData including file
+  const formData = new FormData();
+  formData.append("title", document.getElementById("item-title").value);
+  formData.append("description", document.getElementById("item-desc").value);
+  formData.append("category", document.getElementById("category").value);
+  formData.append("condition", document.getElementById("condition").value);
+  formData.append("price", Number(document.getElementById("price").value));
+  formData.append("isDonation", document.getElementById("donate").checked);
+  formData.append("rollNo", document.getElementById("roll-no").value);
+  formData.append("block", document.getElementById("hostel-block").value);
+
+  const imageFile = document.getElementById("image-upload").files[0];
+  if (imageFile) formData.append("image", imageFile);
+
+  try {
+    const response = await fetch("http://localhost:5000/api/items", {
+      method: "POST",
+      body: formData, // Important: do NOT set Content-Type, browser handles it
+    });
+
+    const result = await response.json();
+
+    if (response.ok) {
+      alert("Item posted successfully!");
+
+      // Reset form fields
+      document.getElementById("item-title").value = "";
+      document.getElementById("item-desc").value = "";
+      document.getElementById("category").value = "";
+      document.getElementById("condition").value = "";
+      document.getElementById("price").value = "";
+      document.getElementById("donate").checked = false;
+      document.getElementById("roll-no").value = "";
+      document.getElementById("hostel-block").value = "";
+      document.getElementById("image-upload").value = "";
+    } else {
+      alert(result.message || "Failed to post item");
+    }
+  } catch (err) {
+    console.error(err);
+    alert("Server error. Try again later.");
+  }
+});
+</script>
+
+</body>
+</html>

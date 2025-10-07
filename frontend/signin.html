@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign In - HostelKart</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --dark-blue: #1B3C53;
+      --medium-blue: #456882;
+      --light-tan: #D2C1B6;
+      --off-white: #F9F3EF;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--off-white);
+      color: var(--dark-blue);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .site-title {
+      font-size: 2.5rem;
+      margin-top: 40px;
+      font-weight: bold;
+      color: var(--dark-blue);
+    }
+
+    .welcome-message {
+      font-size: 1.2rem;
+      text-align: center;
+      color: var(--medium-blue);
+      margin: 10px 0 30px 0;
+    }
+
+    .signin-card {
+      background-color: var(--light-tan);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      width: 90%;
+      max-width: 400px;
+    }
+
+    .signin-card input[type="email"],
+    .signin-card input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+
+    .checkbox-row {
+      display: flex;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    .checkbox-row input {
+      margin-right: 10px;
+    }
+
+    .signin-card button {
+      width: 100%;
+      margin-top: 20px;
+      padding: 12px;
+      font-size: 1rem;
+      background-color: var(--dark-blue);
+      color: var(--off-white);
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .signin-card button:hover {
+      background-color: var(--medium-blue);
+    }
+
+    .social-login {
+      margin-top: 25px;
+      text-align: center;
+    }
+
+    .social-login p {
+      margin-bottom: 10px;
+    }
+
+    .social-buttons {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .social-buttons button {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .google-btn {
+      background-color: #db4437;
+    }
+
+    .facebook-btn {
+      background-color: #4267B2;
+    }
+
+    .social-buttons button:hover {
+      opacity: 0.9;
+    }
+
+    .signup-link {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .signup-link a {
+      color: var(--dark-blue);
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .signup-link a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="site-title">HostelKart</div>
+  <div class="welcome-message">Welcome Back!<br>Sign in to continue to your account</div>
+
+  <div class="signin-card">
+    <form>
+      <input type="email" placeholder="Email address" required />
+      <input type="password" placeholder="Password" required />
+      <div class="checkbox-row">
+        <input type="checkbox" id="remember" />
+        <label for="remember">Remember Me</label>
+      </div>
+      <button type="submit">Sign In</button>
+    </form>
+
+    <div class="social-login">
+      <p>Or continue with</p>
+      <div class="social-buttons">
+        <button class="google-btn">Google</button>
+        <button class="facebook-btn">Facebook</button>
+      </div>
+    </div>
+
+    <div class="signup-link">
+      Don't have an account? <a href="signup.html">Sign up here</a>
+    </div>
+  </div>
+
+  <script>
+  document.querySelector("form").addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const email = document.querySelector('input[type="email"]').value;
+    const password = document.querySelector('input[type="password"]').value;
+
+    try {
+      const res = await fetch("http://localhost:5000/api/auth/signin", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({ email, password })
+});
+
+      const data = await res.json();
+      if (res.ok) {
+        alert(data.message); // Login successful
+        // Optionally redirect:
+        // window.location.href = "dashboard.html";
+      } else {
+        alert(data.message); // Incorrect credentials, etc.
+      }
+    } catch (err) {
+      console.error("Network Error:", err);
+      alert("Something went wrong. Please try again.");
+    }
+  });
+</script>
+
+</body>
+</html>

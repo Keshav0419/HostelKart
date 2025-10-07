@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Buy Item - HostelKart</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        darkblue: '#1B3C53',
+        mediumblue: '#456882',
+        lighttan: '#D2C1B6',
+        offwhite: '#F9F3EF'
+      }
+    }
+  }
+}
+</script>
+</head>
+<body class="bg-offwhite text-darkblue">
+<div class="max-w-6xl mx-auto p-8">
+  <h1 class="text-3xl font-bold mb-8 text-darkblue">Complete Your Purchase</h1>
+
+  <div class="flex flex-col lg:flex-row gap-8">
+    <!-- Item Details -->
+    <div class="lg:w-1/2 bg-white rounded-lg shadow-lg p-6">
+      <h2 id="item-title" class="text-2xl font-semibold mb-2"></h2>
+      <span id="item-condition" class="text-xs px-2 py-1 rounded-full"></span>
+      <div class="h-60 bg-lighttan rounded-lg flex items-center justify-center mt-4 mb-4 overflow-hidden">
+        <img id="item-image" src="" alt="Item" class="w-full h-full object-cover"/>
+      </div>
+      <p id="item-description" class="text-sm text-secondary mb-2"></p>
+      <p id="item-location" class="text-sm text-mediumblue mb-2"></p>
+      <p id="item-price" class="text-xl font-bold text-darkblue"></p>
+    </div>
+
+    <!-- User Details Form -->
+    <div class="lg:w-1/2 bg-white rounded-lg shadow-lg p-6">
+      <h2 class="text-2xl font-semibold mb-4">Your Details</h2>
+      <form id="buy-form" class="space-y-4">
+        <input type="text" id="fullname" placeholder="Full Name" class="border border-darkblue/20 rounded-lg p-3 w-full focus:outline-none focus:ring-2 focus:ring-darkblue" required/>
+        <input type="tel" id="phone" placeholder="Phone Number" class="border border-darkblue/20 rounded-lg p-3 w-full focus:outline-none focus:ring-2 focus:ring-darkblue" required/>
+        <input type="text" id="block" placeholder="Block / Room No." class="border border-darkblue/20 rounded-lg p-3 w-full focus:outline-none focus:ring-2 focus:ring-darkblue" required/>
+        <textarea id="notes" placeholder="Additional Notes" rows="4" class="border border-darkblue/20 rounded-lg p-3 w-full focus:outline-none focus:ring-2 focus:ring-darkblue"></textarea>
+        <button type="submit" class="w-full py-3 bg-darkblue hover:bg-mediumblue text-white font-semibold rounded-lg">Confirm Purchase</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const order = JSON.parse(localStorage.getItem("currentOrder"));
+
+  // Only populate if order exists
+  if (order) {
+    document.getElementById('item-title').innerText = order.name;
+    document.getElementById('item-condition').innerText = order.condition;
+    document.getElementById('item-description').innerText = order.description;
+    document.getElementById('item-location').innerText = order.location;
+    document.getElementById('item-price').innerText = '₹' + order.price;
+    document.getElementById('item-image').src = order.image;
+  }
+
+  const form = document.getElementById("buy-form");
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const fullname = document.getElementById("fullname").value;
+    const phone = document.getElementById("phone").value;
+    const block = document.getElementById("block").value;
+    const notes = document.getElementById("notes").value;
+
+    if (!order) {
+      alert("Cannot submit. No item selected.");
+      return;
+    }
+
+    try {
+      const res = await fetch("http://localhost:5000/api/orders/buy", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: order.name,
+          condition: order.condition,
+          description: order.description,
+          location: order.location,
+          price: Number(order.price),
+          image: order.image,
+          fullname,
+          phone,
+          block,
+          notes
+        })
+      });
+
+      const data = await res.json();
+      if (data.success) {
+        localStorage.removeItem("currentOrder");
+        window.location.href = "order-confirm.html";
+      } else {
+        alert("❌ Error: " + data.message);
+      }
+    } catch (err) {
+      console.error(err);
+      alert("❌ Server error. Check backend console.");
+    }
+  });
+});
+</script>
+</body>
+</html>

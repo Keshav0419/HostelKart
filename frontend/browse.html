@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Browse Items - HostelKart</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            darkblue: '#1B3C53',
+            mediumblue: '#456882',
+            lighttan: '#D2C1B6',
+            offwhite: '#F9F3EF',
+            primary: '#1B3C53',
+            secondary: '#456882',
+            accent: '#D2C1B6'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .item-card img { object-fit: cover; }
+  </style>
+</head>
+<body class="bg-offwhite text-darkblue">
+  <div class="p-8">
+    <h1 class="text-4xl font-bold mb-2 text-darkblue">Browse Items</h1>
+    <p class="text-secondary mb-6">Find exactly what you need from fellow students</p>
+
+    <div class="flex gap-6">
+      <!-- Sidebar -->
+      <div class="w-1/4 bg-lighttan rounded-lg border border-darkblue/10 p-4 sticky top-4">
+        <h2 class="font-semibold text-lg mb-4 text-darkblue">Categories</h2>
+        <ul class="space-y-2 text-darkblue">
+          <li><button onclick="scrollToSection('all-items')" class="w-full flex justify-between items-center bg-darkblue text-white px-4 py-2 rounded-lg">All Items</button></li>
+          <li><button onclick="scrollToSection('books')" class="w-full flex justify-between px-4 py-2 hover:bg-mediumblue/10 rounded-lg">Books</button></li>
+          <li><button onclick="scrollToSection('furniture')" class="w-full flex justify-between px-4 py-2 hover:bg-mediumblue/10 rounded-lg">Furniture</button></li>
+          <li><button onclick="scrollToSection('electronics')" class="w-full flex justify-between px-4 py-2 hover:bg-mediumblue/10 rounded-lg">Electronics</button></li>
+          <li><button onclick="scrollToSection('kitchen')" class="w-full flex justify-between px-4 py-2 hover:bg-mediumblue/10 rounded-lg">Kitchen</button></li>
+          <li><button onclick="scrollToSection('clothes')" class="w-full flex justify-between px-4 py-2 hover:bg-mediumblue/10 rounded-lg">Clothes</button></li>
+        </ul>
+      </div>
+
+      <!-- Items Grid -->
+      <div class="flex-1 space-y-12">
+        <!-- All Items Section -->
+        <div id="all-items">
+          <h2 class="text-2xl font-bold mb-4">All Items</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Books -->
+            <div class="border border-darkblue/10 rounded-lg shadow-sm p-4 bg-white item-card">
+              <span class="text-xs bg-green-100 text-green-600 px-2 py-1 rounded-full">Like New</span>
+              <div class="h-40 bg-lighttan rounded-lg flex items-center justify-center mt-2 mb-4 overflow-hidden">
+                <div class="h-40 bg-lighttan rounded-lg flex items-center justify-center mt-2 mb-4 overflow-hidden">
+  <img src="https://m.media-amazon.com/images/I/71XMqAd+90L._SL1500_.jpg" 
+       alt="Calculus Book" 
+       class="object-cover w-full h-full"/>
+</div>
+
+              </div>
+              <h3 class="font-semibold text-lg text-darkblue">Calculus Textbook</h3>
+              <p class="text-sm text-secondary">Advanced Calculus for beginners</p>
+              <p class="text-sm mt-1 text-mediumblue">📍 Block B, Room 102</p>
+              <p class="font-bold text-darkblue mt-2">₹400</p>
+              <button class="mt-3 w-full py-2 bg-darkblue hover:bg-mediumblue text-white rounded-lg"
+        onclick="openBuyPage(
+          'Calculus Textbook',
+          'Like New',
+          'Advanced Calculus for beginners',
+          'Block B, Room 102',
+          400,
+          'https://m.media-amazon.com/images/I/71XMqAd+90L._SL1500_.jpg'
+        )">
+  🛒 Buy
+</button>
+
+            </div>
+           <!-- Physics Book -->
+<div class="border border-darkblue/10 rounded-lg shadow-sm p-4 bg-white item-card">
+  <span class="text-xs bg-green-100 text-green-600 px-2 py-1 rounded-full">Like New</span>
+  <div class="h-40 bg-lighttan rounded-lg flex items-center justify-center mt-2 mb-4 overflow-hidden">
+    <img src="https://universalbooksellers.com/wp-content/uploads/2020/03/20211023_131631_2.jpg" 
+         alt="Physics Book" 
+         class="object-cover w-full h-full"/>
+  </div>
+  <h3 class="font-semibold text-lg text-darkblue">Physics Textbook</h3>
+  <p class="text-sm text-secondary">Mechanics and Thermodynamics</p>
+  <p class="text-sm mt-1 text-mediumblue">📍 Block A, Room 103</p>
+  <p class="font-bold text-darkblue mt-2">₹350</p>
+  <button class="mt-3 w-full py-2 bg-darkblue hover:bg-mediumblue text-white rounded-lg"
+        onclick="openBuyPage(
+          'Physics Textbook',
+          'Like New',
+          'Mechanics and Thermodynamics',
+          'Block A, Room 103',
+          350,
+          'https://universalbooksellers.com/wp-content/uploads/2020/03/20211023_131631_2.jpg'
+        )">
+  🛒 Buy
+</button>
+
+</div>
+
+<!-- Chemistry Book -->
+<div class="border border-darkblue/10 rounded-lg shadow-sm p-4 bg-white item-card">
+  <span class="text-xs bg-yellow-100 text-yellow-600 px-2 py-1 rounded-full">Good</span>
+  <div class="h-40 bg-lighttan rounded-lg flex items-center justify-center mt-2 mb-4 overflow-hidden">
+    <img src="https://i.thenile.io/r1000/9780078617980.jpg?r=5c13c4f10d531" 
+         alt="Chemistry Book" 
+         class="object-cover w-full h-full"/>
+  </div>
+  <h3 class="font-semibold text-lg text-darkblue">Chemistry Textbook</h3>
+  <p class="text-sm text-secondary">Organic Chemistry for beginners</p>
+  <p class="text-sm mt-1 text-mediumblue">📍 Block C, Room 110</p>
+  <p class="font-bold text-darkblue mt-2">₹300</p>
+  <button class="mt-3 w-full py-2 bg-darkblue hover:bg-mediumblue text-white rounded-lg"
+        onclick="openBuyPage(
+          'Chemistry Textbook',
+          'Good',
+          'Organic Chemistry for beginners',
+          'Block C, Room 110',
+          300,
+          'https://i.thenile.io/r1000/9780078617980.jpg?r=5c13c4f10d531'
+        )">
+  🛒 Buy
+</button>
+
+</div>
+
+<!-- Advanced Math Book -->
+<div class="border border-darkblue/10 rounded-lg shadow-sm p-4 bg-white item-card">
+  <span class="text-xs bg-yellow-100 text-yellow-600 px-2 py-1 rounded-full">Good</span>
+  <div class="h-40 bg-lighttan rounded-lg flex items-center justify-center mt-2 mb-4 overflow-hidden">
+    <img src="https://m.media-amazon.com/images/I/81zODGX04rL._SL1500_.jpg" 
+         alt="Math Book" 
+         class="object-cover w-full h-full"/>
+  </div>
+  <h3 class="font-semibold text-lg text-darkblue">Advanced Math Book</h3>
+  <p class="text-sm text-secondary">Problems and Solutions</p>
+  <p class="text-sm mt-1 text-mediumblue">📍 Block D, Room 120</p>
+  <p class="font-bold text-darkblue mt-2">₹450</p>
+ <button class="mt-3 w-full py-2 bg-darkblue hover:bg-mediumblue text-white rounded-lg"
+        onclick="openBuyPage(
+          'Advanced Math Book',
+          'Good',
+          'Problems and Solutions',
+          'Block D, Room 120',
+          450,
+          'https://m.media-amazon.com/images/I/81zODGX04rL._SL1500_.jpg'
+        )">
+  🛒 Buy
+</button>
+
+</div>
+
+<!-- Study Table Set -->
+<div class="border border-darkblue/10 rounded-lg shadow-sm p-4 bg-white item-card">
+  <span class="text-xs bg-yellow-100 text-yellow-600 px-2 py-1 rounded-full">Good</span>
+  <div class="h-40 bg-lighttan rounded-lg flex items-center justify-center mt-2 mb-4 overflow-hidden">
+    <img src="https://ak1.ostkcdn.com/images/products/is/images/direct/81ca15d0a860a9a0c120c071efa623243be002d5/Kids-Study-Table-and-Chair-Set.jpg" 
+         alt="Study Table" 
+         class="object-cover w-full h-full"/>
+  </div>
+  <h3 class="font-semibold text-lg text-darkblue">Study Table Set</h3>
+  <p class="text-sm text-secondary">Wooden table perfect for studying</p>
+  <p class="text-sm mt-1 text-mediumblue">📍 Block C, Room 115</p>
+  <p class="font-bold text-darkblue mt-2">₹1200</p>
+ <button class="mt-3 w-full py-2 bg-darkblue hover:bg-mediumblue text-white rounded-lg"
+        onclick="openBuyPage(
+          'Study Table Set',
+          'Good',
+          'Wooden table perfect for studying',
+          'Block C, Room 115',
+          1200,
+          'https://ak1.ostkcdn.com/images/products/is/images/direct/81ca15d0a860a9a0c120c071efa623243be002d5/Kids-Study-Table-and-Chair-Set.jpg'
+        )">
+  🛒 Buy
+</button>
+
+</div>
+
+<!-- Office Chair -->
+<div class="border border-darkblue/10 rounded-lg shadow-sm p-4 bg-white item-card">
+  <span class="text-xs bg-green-100 text-green-600 px-2 py-1 rounded-full">Like New</span>
+  <div class="h-40 bg-lighttan rounded-lg flex items-center justify-center mt-2 mb-4 overflow-hidden">
+    <img src="https://tse1.mm.bing.net/th/id/OIP.6hb4Nbn4OXeBuATgzlrxaAHaLt?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3" 
+         alt="Office Chair" 
+         class="object-cover w-full h-full"/>
+  </div>
+  <h3 class="font-semibold text-lg text-darkblue">Chair</h3>
+  <p class="text-sm text-secondary">Comfortable chair for study/work</p>
+  <p class="text-sm mt-1 text-mediumblue">📍 Block A, Room 101</p>
+  <p class="font-bold text-darkblue mt-2">₹800</p>
+  <button class="mt-3 w-full py-2 bg-darkblue hover:bg-mediumblue text-white rounded-lg"
+        onclick="openBuyPage(
+          'Chair',
+          'Like New',
+          'Comfortable chair for study/work',
+          'Block A, Room 101',
+          800,
+          'https://tse1.mm.bing.net/th/id/OIP.6hb4Nbn4OXeBuATgzlrxaAHaLt?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3'
+        )">
+  🛒 Buy
+</button>
+
+</div>
+
+            
+            
+
+            <!-- Electronics, Kitchen, Clothes follow same pattern -->
+
+          </div>
+        </div>
+
+        <!-- Individual sections: Books, Furniture, Electronics, Kitchen, Clothes -->
+        <div id="books">
+  <h2 class="text-2xl font-bold mb-4">Books</h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <!-- Book 1 -->
+    <div class="border border-darkblue/10 rounded-lg shadow-sm p-4 bg-white item-card">
+      <span class="text-xs bg-green-100 text-green-600 px-2 py-1 rounded-full">Like New</span>
+      <div class="h-40 bg-lighttan rounded-lg flex items-center justify-center mt-2 mb-4 overflow-hidden">
+        <img src="https://m.media-amazon.com/images/I/71XMqAd+90L._SL1500_.jpg" alt="Calculus Book" class="w-full h-full"/>
+      </div>
+      <h3 class="font-semibold text-lg text-darkblue">Calculus Textbook</h3>
+      <p class="text-sm text-secondary">Advanced Calculus for beginners</p>
+      <p class="text-sm mt-1 text-mediumblue">📍 Block B, Room 102</p>
+      <p class="font-bold text-darkblue mt-2">₹400</p>
+      <button class="mt-3 w-full py-2 bg-darkblue hover:bg-mediumblue text-white rounded-lg"
+        onclick="openBuyPage(
+          'Calculus Textbook',
+          'Like New',
+          'Advanced Calculus for beginners',
+          'Block B, Room 102',
+          400,
+          'https://m.media-amazon.com/images/I/71XMqAd+90L._SL1500_.jpg'
+        )">
+  🛒 Buy
+</button>
+
+    </div>
+
+    <!-- Book 2 -->
+    <div class="border border-darkblue/10 rounded-lg shadow-sm p-4 bg-white item-card">
+      <span class="text-xs bg-green-100 text-green-600 px-2 py-1 rounded-full">Like New</span>
+      <div class="h-40 bg-lighttan rounded-lg flex items-center justify-center mt-2 mb-4 overflow-hidden">
+        <img src="https://universalbooksellers.com/wp-content/uploads/2020/03/20211023_131631_2.jpg" alt="Physics Book" class="w-full h-full"/>
+      </div>
+      <h3 class="font-semibold text-lg text-darkblue">Physics Textbook</h3>
+      <p class="text-sm text-secondary">Mechanics and Thermodynamics</p>
+      <p class="text-sm mt-1 text-mediumblue">📍 Block A, Room 103</p>
+      <p class="font-bold text-darkblue mt-2">₹350</p>
+      <button class="mt-3 w-full py-2 bg-darkblue hover:bg-mediumblue text-white rounded-lg"
+        onclick="openBuyPage(
+          'Physics Textbook',
+          'Like New',
+          'Mechanics and Thermodynamics',
+          'Block A, Room 103',
+          350,
+          'https://universalbooksellers.com/wp-content/uploads/2020/03/20211023_131631_2.jpg'
+        )">
+  🛒 Buy
+</button>
+
+    </div>
+
+    <!-- Book 3 -->
+    <div class="border border-darkblue/10 rounded-lg shadow-sm p-4 bg-white item-card">
+      <span class="text-xs bg-yellow-100 text-yellow-600 px-2 py-1 rounded-full">Good</span>
+      <div class="h-40 bg-lighttan rounded-lg flex items-center justify-center mt-2 mb-4 overflow-hidden">
+        <img src="https://i.thenile.io/r1000/9780078617980.jpg?r=5c13c4f10d531" alt="Chemistry Book" class="w-full h-full"/>
+      </div>
+      <h3 class="font-semibold text-lg text-darkblue">Chemistry Textbook</h3>
+      <p class="text-sm text-secondary">Organic Chemistry for beginners</p>
+      <p class="text-sm mt-1 text-mediumblue">📍 Block C, Room 110</p>
+      <p class="font-bold text-darkblue mt-2">₹300</p>
+      <button class="mt-3 w-full py-2 bg-darkblue hover:bg-mediumblue text-white rounded-lg"
+        onclick="openBuyPage(
+          'Chemistry Textbook',
+          'Good',
+          'Organic Chemistry for beginners',
+          'Block C, Room 110',
+          300,
+          'https://i.thenile.io/r1000/9780078617980.jpg?r=5c13c4f10d531'
+        )">
+  🛒 Buy
+</button>
+
+    </div>
+
+    
+  </div>
+</div>
+
+
+        <div id="furniture">
+  <h2 class="text-2xl font-bold mb-4">Furniture</h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <!-- Furniture 1 -->
+    <div class="border border-darkblue/10 rounded-lg shadow-sm p-4 bg-white item-card">
+      <span class="text-xs bg-green-100 text-green-600 px-2 py-1 rounded-full">Like New</span>
+      <div class="h-40 bg-lighttan rounded-lg flex items-center justify-center mt-2 mb-4 overflow-hidden">
+        <img src="https://ak1.ostkcdn.com/images/products/is/images/direct/81ca15d0a860a9a0c120c071efa623243be002d5/Kids-Study-Table-and-Chair-Set-with-Storage-Drawer-and-Hutch-and-Pine-Wood-Frame-for-3-Over-Years-Old.jpg" alt="Study Table Set" class="w-full h-full"/>
+      </div>
+      <h3 class="font-semibold text-lg text-darkblue">Study Table Set</h3>
+      <p class="text-sm text-secondary">Table with chair and storage drawer</p>
+      <p class="text-sm mt-1 text-mediumblue">📍 Block B, Room 115</p>
+      <p class="font-bold text-darkblue mt-2">₹1200</p>
+      <button class="mt-3 w-full py-2 bg-darkblue hover:bg-mediumblue text-white rounded-lg"
+        onclick="openBuyPage(
+          'Study Table Set',
+          'Like New',
+          'Table with chair and storage drawer',
+          'Block B, Room 115',
+          1200,
+          'https://ak1.ostkcdn.com/images/products/is/images/direct/81ca15d0a860a9a0c120c071efa623243be002d5/Kids-Study-Table-and-Chair-Set-with-Storage-Drawer-and-Hutch-and-Pine-Wood-Frame-for-3-Over-Years-Old.jpg'
+        )">
+  🛒 Buy
+</button>
+
+    </div>
+
+    <!-- Furniture 2 -->
+    <div class="border border-darkblue/10 rounded-lg shadow-sm p-4 bg-white item-card">
+      <span class="text-xs bg-yellow-100 text-yellow-600 px-2 py-1 rounded-full">Good</span>
+      <div class="h-40 bg-lighttan rounded-lg flex items-center justify-center mt-2 mb-4 overflow-hidden">
+        <img src="https://tse1.mm.bing.net/th/id/OIP.6hb4Nbn4OXeBuATgzlrxaAHaLt?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Bookshelf" class="w-full h-full"/>
+      </div>
+      <h3 class="font-semibold text-lg text-darkblue">Chair</h3>
+      <p class="text-sm text-secondary">5-tier wooden bookshelf</p>
+      <p class="text-sm mt-1 text-mediumblue">📍 Block A, Room 101</p>
+      <p class="font-bold text-darkblue mt-2">₹800</p>
+      <button class="mt-3 w-full py-2 bg-darkblue hover:bg-mediumblue text-white rounded-lg"
+        onclick="openBuyPage(
+          'Chair',
+          'Good',
+          '5-tier wooden bookshelf',
+          'Block A, Room 101',
+          800,
+          'https://tse1.mm.bing.net/th/id/OIP.6hb4Nbn4OXeBuATgzlrxaAHaLt?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3'
+        )">
+  🛒 Buy
+</button>
+
+    </div>
+
+  
+
+  
+  </div>
+</div>
+
+
+        <div id="electronics">
+  <h2 class="text-2xl font-bold mb-4">Electronics</h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <!-- Electronics 1 -->
+    <div class="border border-darkblue/10 rounded-lg shadow-sm p-4 bg-white item-card">
+      <span class="text-xs bg-green-100 text-green-600 px-2 py-1 rounded-full">Like New</span>
+      <div class="h-40 bg-lighttan rounded-lg flex items-center justify-center mt-2 mb-4 overflow-hidden">
+        <img src="https://m.media-amazon.com/images/I/71PLJ7OsJRL._AC_SL1500_.jpg" alt="HP Laptop Charger" class="w-full h-full"/>
+      </div>
+      <h3 class="font-semibold text-lg text-darkblue">HP Laptop Charger</h3>
+      <p class="text-sm text-secondary">65W charger, compatible with most HP laptops</p>
+      <p class="text-sm mt-1 text-mediumblue">📍 Block C, Room 304</p>
+      <p class="font-bold text-darkblue mt-2">₹800</p>
+      <button class="mt-3 w-full py-2 bg-darkblue hover:bg-mediumblue text-white rounded-lg"
+        onclick="openBuyPage(
+          'HP Laptop Charger',
+          'Like New',
+          '65W charger, compatible with most HP laptops',
+          'Block C, Room 304',
+          800,
+          'https://m.media-amazon.com/images/I/71PLJ7OsJRL._AC_SL1500_.jpg'
+        )">
+  🛒 Buy
+</button>
+
+    </div>
+
+    <!-- Electronics 2 -->
+    <div class="border border-darkblue/10 rounded-lg shadow-sm p-4 bg-white item-card">
+      <span class="text-xs bg-yellow-100 text-yellow-600 px-2 py-1 rounded-full">Good</span>
+      <div class="h-40 bg-lighttan rounded-lg flex items-center justify-center mt-2 mb-4 overflow-hidden">
+        <img src="https://www.bhphotovideo.com/images/images2500x2500/sony_mdrxb650bt_l_mdr_xb650bt_extrabass_bluetooth_headphones_1220509.jpg" alt="Bluetooth Headphones" class="w-full h-full"/>
+      </div>
+      <h3 class="font-semibold text-lg text-darkblue">Bluetooth Headphones</h3>
+      <p class="text-sm text-secondary">Wireless, noise-cancelling headphones</p>
+      <p class="text-sm mt-1 text-mediumblue">📍 Block A, Room 102</p>
+      <p class="font-bold text-darkblue mt-2">₹1200</p>
+      <button class="mt-3 w-full py-2 bg-darkblue hover:bg-mediumblue text-white rounded-lg"
+        onclick="openBuyPage(
+          'Bluetooth Headphones',
+          'Good',
+          'Wireless, noise-cancelling headphones',
+          'Block A, Room 102',
+          1200,
+          'https://www.bhphotovideo.com/images/images2500x2500/sony_mdrxb650bt_l_mdr_xb650bt_extrabass_bluetooth_headphones_1220509.jpg'
+        )">
+  🛒 Buy
+</button>
+
+    </div>
+
+    <!-- Electronics 3 -->
+    <div class="border border-darkblue/10 rounded-lg shadow-sm p-4 bg-white item-card">
+      <span class="text-xs bg-yellow-100 text-yellow-600 px-2 py-1 rounded-full">Good</span>
+      <div class="h-40 bg-lighttan rounded-lg flex items-center justify-center mt-2 mb-4 overflow-hidden">
+        <img src="https://tse3.mm.bing.net/th/id/OIP.4BL8Obiwh6W1MiWIQvxORgHaHm?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Smartphone" class="w-full h-full"/>
+      </div>
+      <h3 class="font-semibold text-lg text-darkblue">Smartphone</h3>
+      <p class="text-sm text-secondary">Used Android smartphone, good condition</p>
+      <p class="text-sm mt-1 text-mediumblue">📍 Block B, Room 210</p>
+      <p class="font-bold text-darkblue mt-2">₹7000</p>
+      <button class="mt-3 w-full py-2 bg-darkblue hover:bg-mediumblue text-white rounded-lg"
+        onclick="openBuyPage(
+          'Smartphone',
+          'Good',
+          'Used Android smartphone, good condition',
+          'Block B, Room 210',
+          7000,
+          'https://tse3.mm.bing.net/th/id/OIP.4BL8Obiwh6W1MiWIQvxORgHaHm?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3'
+        )">
+  🛒 Buy
+</button>
+
+    </div>
+
+
+   
+  </div>
+</div>
+
+
+        <!-- Kitchen Section -->
+<div id="kitchen">
+  <h2 class="text-2xl font-bold mb-4">Kitchen</h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <!-- Kitchen Item 1 -->
+    <div class="border border-darkblue/10 rounded-lg shadow-sm p-4 bg-white item-card">
+      <span class="text-xs bg-green-100 text-green-600 px-2 py-1 rounded-full">Like New</span>
+      <div class="h-40 bg-lighttan rounded-lg flex items-center justify-center mt-2 mb-4 overflow-hidden">
+        <img src="https://tse1.mm.bing.net/th/id/OIP.6vqR-ONomg_4-4rcKAKc6gHaHa?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Blender" class="w-full h-full"/>
+      </div>
+      <h3 class="font-semibold text-lg text-darkblue">Blender</h3>
+      <p class="text-sm text-secondary">High-speed blender, works perfectly</p>
+      <p class="text-sm mt-1 text-mediumblue">📍 Block C, Room 102</p>
+      <p class="font-bold text-darkblue mt-2">₹1800</p>
+      <button class="mt-3 w-full py-2 bg-darkblue hover:bg-mediumblue text-white rounded-lg"
+        onclick="openBuyPage(
+          'Blender',
+          'Like New',
+          'High-speed blender, works perfectly',
+          'Block C, Room 102',
+          1800,
+          'https://tse1.mm.bing.net/th/id/OIP.6vqR-ONomg_4-4rcKAKc6gHaHa?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3'
+        )">
+  🛒 Buy
+</button>
+
+    </div>
+
+    <!-- Kitchen Item 2 -->
+    <div class="border border-darkblue/10 rounded-lg shadow-sm p-4 bg-white item-card">
+      <span class="text-xs bg-yellow-100 text-yellow-600 px-2 py-1 rounded-full">Good</span>
+      <div class="h-40 bg-lighttan rounded-lg flex items-center justify-center mt-2 mb-4 overflow-hidden">
+        <img src="https://m.media-amazon.com/images/S/aplus-media/sota/0e2c2417-098b-4bc6-a454-9b65ed006106.jpg" alt="Cookware Set" class="w-full h-full"/>
+      </div>
+      <h3 class="font-semibold text-lg text-darkblue">Kettle</h3>
+      <p class="text-sm text-secondary">5-piece non-stick cookware set</p>
+      <p class="text-sm mt-1 text-mediumblue">📍 Block A, Room 203</p>
+      <p class="font-bold text-darkblue mt-2">₹2500</p>
+      <button class="mt-3 w-full py-2 bg-darkblue hover:bg-mediumblue text-white rounded-lg"
+        onclick="openBuyPage(
+          'Kettle',
+          'Good',
+          '5-piece non-stick cookware set',
+          'Block A, Room 203',
+          2500,
+          'https://m.media-amazon.com/images/S/aplus-media/sota/0e2c2417-098b-4bc6-a454-9b65ed006106.jpg'
+        )">
+  🛒 Buy
+</button>
+
+    </div>
+
+    <!-- Kitchen Item 4 -->
+    <div class="border border-darkblue/10 rounded-lg shadow-sm p-4 bg-white item-card">
+      <span class="text-xs bg-red-100 text-red-600 px-2 py-1 rounded-full">Used</span>
+      <div class="h-40 bg-lighttan rounded-lg flex items-center justify-center mt-2 mb-4 overflow-hidden">
+        <img src="https://i5.walmartimages.com/asr/16f77040-27ab-4008-9852-59c900d7a7d9_1.c524f1d9c465e122596bf65f939c8d26.jpeg" alt="Coffee Maker" class="w-full h-full"/>
+      </div>
+      <h3 class="font-semibold text-lg text-darkblue">Coffee Maker</h3>
+      <p class="text-sm text-secondary">Single-serve coffee maker, works fine</p>
+      <p class="text-sm mt-1 text-mediumblue">📍 Block D, Room 301</p>
+      <p class="font-bold text-darkblue mt-2">₹1200</p>
+      <button class="mt-3 w-full py-2 bg-darkblue hover:bg-mediumblue text-white rounded-lg"
+          onclick="openBuyPage(
+            'Coffee Maker',
+            'Used',
+            'Single-serve coffee maker, works fine',
+            'Block D, Room 301',
+            1200,
+            'https://i5.walmartimages.com/asr/16f77040-27ab-4008-9852-59c900d7a7d9_1.c524f1d9c465e122596bf65f939c8d26.jpeg'
+          )">
+    🛒 Buy
+  </button>
+    </div>
+  </div>
+</div>
+
+<!-- Clothes Section -->
+<div id="clothes">
+  <h2 class="text-2xl font-bold mb-4">Clothes</h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <!-- Clothes Item 1 -->
+    <div class="border border-darkblue/10 rounded-lg shadow-sm p-4 bg-white item-card">
+      <span class="text-xs bg-green-100 text-green-600 px-2 py-1 rounded-full">Like New</span>
+      <div class="h-40 bg-lighttan rounded-lg flex items-center justify-center mt-2 mb-4 overflow-hidden">
+        <img src="https://cdn.pixabay.com/photo/2024/02/06/18/10/ai-generated-8557635_1280.jpg" 
+             alt="T-Shirt" 
+             class="object-cover w-full h-full"/>
+      </div>
+      <h3 class="font-semibold text-lg text-darkblue">T-Shirt</h3>
+      <p class="text-sm text-secondary">Cotton t-shirt, like new</p>
+      <p class="text-sm mt-1 text-mediumblue">📍 Block A, Room 101</p>
+      <p class="font-bold text-darkblue mt-2">₹300</p>
+      <button class="mt-3 w-full py-2 bg-darkblue hover:bg-mediumblue text-white rounded-lg"
+        onclick="openBuyPage(
+          'T-Shirt',
+          'Like New',
+          'Cotton t-shirt, like new',
+          'Block A, Room 101',
+          300,
+          'https://cdn.pixabay.com/photo/2024/02/06/18/10/ai-generated-8557635_1280.jpg'
+        )">
+  🛒 Buy
+</button>
+
+    </div>
+
+    <!-- Clothes Item 2 -->
+    <div class="border border-darkblue/10 rounded-lg shadow-sm p-4 bg-white item-card">
+      <span class="text-xs bg-yellow-100 text-yellow-600 px-2 py-1 rounded-full">Good</span>
+      <div class="h-40 bg-lighttan rounded-lg flex items-center justify-center mt-2 mb-4 overflow-hidden">
+        <img src="https://img.freepik.com/free-photo/jeans_1203-8094.jpg" 
+             alt="Jeans" 
+             class="object-cover w-full h-full"/>
+      </div>
+      <h3 class="font-semibold text-lg text-darkblue">Jeans</h3>
+      <p class="text-sm text-secondary">Denim jeans, gently used</p>
+      <p class="text-sm mt-1 text-mediumblue">📍 Block B, Room 115</p>
+      <p class="font-bold text-darkblue mt-2">₹500</p>
+      <button class="mt-3 w-full py-2 bg-darkblue hover:bg-mediumblue text-white rounded-lg"
+          onclick="openBuyPage(
+            'Jeans',
+            'Good',
+            'Denim jeans, gently used',
+            'Block B, Room 115',
+            500,
+            'https://img.freepik.com/free-photo/jeans_1203-8094.jpg'
+          )">
+    🛒 Buy
+  </button>
+    </div>
+
+    <!-- Clothes Item 3 -->
+    <div class="border border-darkblue/10 rounded-lg shadow-sm p-4 bg-white item-card">
+      <span class="text-xs bg-yellow-100 text-yellow-600 px-2 py-1 rounded-full">Good</span>
+      <div class="h-40 bg-lighttan rounded-lg flex items-center justify-center mt-2 mb-4 overflow-hidden">
+        <img src="https://as2.ftcdn.net/v2/jpg/00/93/71/37/1000_F_93713755_cO7yC331gdqbPImq7T2Nnw9P2BRs8xDb.jpg" 
+             alt="Jacket" 
+             class="object-cover w-full h-full"/>
+      </div>
+      <h3 class="font-semibold text-lg text-darkblue">Jacket</h3>
+      <p class="text-sm text-secondary">Winter jacket, warm and comfortable</p>
+      <p class="text-sm mt-1 text-mediumblue">📍 Block C, Room 205</p>
+      <p class="font-bold text-darkblue mt-2">₹1200</p>
+      <button class="mt-3 w-full py-2 bg-darkblue hover:bg-mediumblue text-white rounded-lg"
+          onclick="openBuyPage(
+            'Jacket',
+            'Good',
+            'Winter jacket, warm and comfortable',
+            'Block C, Room 205',
+            1200,
+            'https://as2.ftcdn.net/v2/jpg/00/93/71/37/1000_F_93713755_cO7yC331gdqbPImq7T2Nnw9P2BRs8xDb.jpg'
+          )">
+    🛒 Buy
+  </button>
+    </div>
+  </div>
+</div>
+
+
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function scrollToSection(sectionId) {
+      const section = document.getElementById(sectionId);
+      if(section) section.scrollIntoView({ behavior: 'smooth' });
+    }
+  function openBuyPage(name, condition, description, location, price, image) {
+  const order = { name, condition, description, location, price, image };
+  localStorage.setItem("currentOrder", JSON.stringify(order));
+  window.location.href = "buy.html"; // redirect to buy page
+}
+
+  </script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>

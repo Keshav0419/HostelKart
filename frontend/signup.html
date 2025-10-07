@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign Up - HostelKart</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet"/>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <style>
+    :root {
+      --dark-blue: #1B3C53;
+      --medium-blue: #456882;
+      --light-tan: #D2C1B6;
+      --off-white: #F9F3EF;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--off-white);
+      color: var(--dark-blue);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .site-title {
+      font-size: 2.5rem;
+      margin-top: 40px;
+      font-weight: bold;
+      color: var(--dark-blue);
+    }
+
+    .welcome-message {
+      font-size: 1.2rem;
+      text-align: center;
+      color: var(--medium-blue);
+      margin: 10px 0 30px 0;
+    }
+
+    .signup-card {
+      background-color: var(--light-tan);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      width: 90%;
+      max-width: 600px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 500;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+
+    .row-group {
+      display: flex;
+      gap: 20px;
+    }
+
+    .row-group .form-group {
+      flex: 1;
+    }
+
+    .signup-card button {
+      width: 100%;
+      margin-top: 20px;
+      padding: 12px;
+      font-size: 1rem;
+      background-color: var(--dark-blue);
+      color: var(--off-white);
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .signup-card button:hover {
+      background-color: var(--medium-blue);
+    }
+
+    .checkbox-row {
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+  gap: 10px; /* Adjusts the spacing between checkbox and label */
+}
+
+.checkbox-row input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  accent-color: #456882; /* Optional: matches your theme color */
+}
+
+.checkbox-label {
+  font-size: 14px;
+  color: #1B3C53;
+  margin: 0;
+}
+
+
+    .social-login {
+      margin-top: 25px;
+      text-align: center;
+    }
+
+    .social-login p {
+      margin-bottom: 10px;
+    }
+
+    .social-buttons {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .social-buttons button {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .google-btn {
+      background-color: #db4437;
+    }
+
+    .facebook-btn {
+      background-color: #4267B2;
+    }
+
+    .social-buttons button:hover {
+      opacity: 0.9;
+    }
+
+    .signin-link {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .signin-link a {
+      color: var(--dark-blue);
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .signin-link a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      .row-group {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="site-title">HostelKart</div>
+  <div class="welcome-message">Join HostelKart<br>Create your account to start trading</div>
+
+  <div class="signup-card">
+    <form>
+      <div class="form-group">
+        <label for="fullname">Full Name</label>
+        <input type="text" id="fullname" placeholder="Enter full name" required />
+      </div>
+
+      <div class="row-group">
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" placeholder="Enter email" required />
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" placeholder="Enter phone number" required />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="college">College</label>
+        <input type="text" id="college" placeholder="Enter college name" required />
+      </div>
+
+      <div class="row-group">
+        <div class="form-group">
+          <label for="block">Hostel Block</label>
+          <input type="text" id="block" placeholder="Hostel Block" required />
+        </div>
+        <div class="form-group">
+          <label for="rollno">Roll Number</label>
+          <input type="text" id="rollno" placeholder="Roll Number" required />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter password" required />
+      </div>
+
+      <div class="form-group">
+        <label for="confirm-password">Confirm Password</label>
+        <input type="password" id="confirm-password" placeholder="Confirm password" required />
+      </div>
+
+      <div class="checkbox-row">
+  <input type="checkbox" id="terms" required />
+  <label for="terms" class="checkbox-label">
+    I agree to the Terms and Privacy Policy
+  </label>
+</div>
+
+
+
+      <button type="submit">Sign Up</button>
+    </form>
+
+    <div class="social-login">
+      <p>Or continue with</p>
+      <div class="social-buttons">
+        <button class="google-btn">
+          <i class="fab fa-google"></i> Google
+        </button>
+        <button class="facebook-btn">
+          <i class="fab fa-facebook-f"></i> Facebook
+        </button>
+      </div>
+    </div>
+
+    <div class="signin-link">
+      Already have an account? <a href="signin.html">Sign in here</a>
+    </div>
+  </div>
+<script>
+  document.querySelector("form").addEventListener("submit", async function (e) {
+  e.preventDefault();
+
+  const data = {
+    fullname: document.getElementById("fullname").value,
+    email: document.getElementById("email").value,
+    phone: document.getElementById("phone").value,
+    college: document.getElementById("college").value,
+    block: document.getElementById("block").value,
+    rollno: document.getElementById("rollno").value,
+    password: document.getElementById("password").value,
+    confirmPassword: document.getElementById("confirm-password").value,
+  };
+
+  if (data.password !== data.confirmPassword) {
+    alert("Passwords do not match!");
+    return;
+  }
+
+  try {
+    const response = await fetch("http://localhost:5000/api/auth/signup", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+
+    const result = await response.json();
+
+    if (response.ok) {
+      alert("Signup successful!");
+      window.location.href = "signin.html"; // Redirect to signin page
+    } else {
+      alert(result.message || "Signup failed.");
+    }
+  } catch (err) {
+    alert("Server error. Please try again later.");
+    console.error(err);
+  }
+});
+
+</script>
+
+</body>
+</html>
